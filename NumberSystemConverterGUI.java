@@ -1,7 +1,6 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 
 /**
  * High-Level Number System Converter (GUI Version)
@@ -107,32 +106,29 @@ public class NumberSystemConverterGUI {
         panel.add(resultField, gbc);
 
         // Add action listener for the convert button
-        convertButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    String numberInput = numberField.getText();
-                    int fromBase = switch (fromBaseDropdown.getSelectedIndex()) {
-                        case 0 -> 2; // Binary
-                        case 1 -> 10; // Decimal
-                        case 2 -> 8; // Octal
-                        case 3 -> 16; // Hexadecimal
-                        default -> throw new IllegalStateException("Unexpected value: " + fromBaseDropdown.getSelectedIndex());
-                    };
-                    int toBase = switch (toBaseDropdown.getSelectedIndex()) {
-                        case 0 -> 2; // Binary
-                        case 1 -> 10; // Decimal
-                        case 2 -> 8; // Octal
-                        case 3 -> 16; // Hexadecimal
-                        default -> throw new IllegalStateException("Unexpected value: " + toBaseDropdown.getSelectedIndex());
-                    };
-
-                    // Perform conversion
-                    String result = convertBase(numberInput, fromBase, toBase);
-                    resultField.setText(result);
-                } catch (NumberFormatException ex) {
-                    resultField.setText("Invalid input. Ensure correct number and base.");
-                }
+        convertButton.addActionListener((ActionEvent e) -> {
+            try {
+                String numberInput = numberField.getText();
+                int fromBase = switch (fromBaseDropdown.getSelectedIndex()) {
+                    case 0 -> 2; // Binary
+                    case 1 -> 10; // Decimal
+                    case 2 -> 8; // Octal
+                    case 3 -> 16; // Hexadecimal
+                    default -> throw new IllegalStateException("Unexpected value: " + fromBaseDropdown.getSelectedIndex());
+                };
+                int toBase = switch (toBaseDropdown.getSelectedIndex()) {
+                    case 0 -> 2; // Binary
+                    case 1 -> 10; // Decimal
+                    case 2 -> 8; // Octal
+                    case 3 -> 16; // Hexadecimal
+                    default -> throw new IllegalStateException("Unexpected value: " + toBaseDropdown.getSelectedIndex());
+                };
+                
+                // Perform conversion
+                String result = convertBase(numberInput, fromBase, toBase);
+                resultField.setText(result);
+            } catch (NumberFormatException ex) {
+                resultField.setText("Invalid input. Ensure correct number and base.");
             }
         });
 
