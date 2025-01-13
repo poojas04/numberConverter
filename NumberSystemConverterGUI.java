@@ -1,9 +1,10 @@
 import java.awt.*;
+import static java.awt.Color.pink;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
- * High-Level Number System Converter (GUI Version)
+ * Number System Converter (GUI Version)
  * 
  * This program provides functionality to convert numbers
  * between binary, decimal, octal, and hexadecimal formats.
@@ -29,11 +30,12 @@ public class NumberSystemConverterGUI {
      * Initializes and displays the GUI for the Number System Converter.
      */
     public static void main(String[] args) {
+        
         // Create the main frame
         JFrame frame = new JFrame("Universal Number Converter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
-        frame.getContentPane().setBackground(Color.PINK);
+        frame.getContentPane().setBackground(pink);
 
         // Create a panel with centered layout
         JPanel panel = new JPanel();
@@ -43,6 +45,7 @@ public class NumberSystemConverterGUI {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
+        
         // Add components
         JLabel numberLabel = new JLabel("Enter the number to convert:");
         JTextField numberField = new JTextField(15);
